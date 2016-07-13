@@ -10,6 +10,32 @@
 <div>
     <div id="ajaxDiv">
     </div>
+
+    <div>
+        Wybierz swoją ulubioną postać z OnePiece
+        <table>
+            <tr>
+                <th>
+                    Płeć
+                </th>
+                <td>
+                    <asp:DropDownList  ID="ddlGenderASPNET" ClientIDMode="Static">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Imie
+                </th>
+                <td>
+                    <asp:DropDownList ID="ddlNameASPNET" ClientIDMode="Static">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+        </table>
+        <input id="Button1" type="button" value="Load Button" />
+        <asp:Button ID="Button1"  Text="Load Button" />
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -36,4 +62,26 @@
     function printAddress(div, item) {
         div.append("<br/>" + "   " + "City: " + item.Line1);
     }
+
+
+    $().ready(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetGenders",
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                $("#ddlGender").get(0).options.length = 0;
+                $("#ddlGender").get(0).options[0] = new Option("Wybierz płeć", "-1");
+
+                $.each(msg.d, function (index, item) {
+                    $("#ddlGender").get(0).options[$("#ddlGender").get(0).options.length] = new Option(item.Display, item.Value);
+                });
+            },
+            error: function () {
+                alert("Błąd wczytania płci");
+            }
+        });
+    });
 </script>

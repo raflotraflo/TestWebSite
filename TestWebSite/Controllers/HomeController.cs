@@ -50,5 +50,41 @@ namespace TestWebSite.Controllers
 
             return Json(persons, JsonRequestBehavior.AllowGet);
         }
+
+        public List<DropDownItem> GetGenders()
+        {
+            return new List<DropDownItem>()
+                {
+                    new DropDownItem(1,"Mężczyzna"),
+                    new DropDownItem(2,"Kobieta")
+                };
+
+        }
+
+        public List<DropDownItem> GetNames(int genderID)
+        {
+            if (genderID.Equals(1))
+            {
+                return new List<DropDownItem>
+                    {
+                        new DropDownItem(1,"Luffy"),
+                        new DropDownItem(2,"Zorro"),
+                        new DropDownItem(3,"Sanji"),
+                        new DropDownItem(4,"Brook"),
+                        new DropDownItem(5,"Usopp"),
+                        new DropDownItem(6,"Franky"),
+                        new DropDownItem(7,"Tony Tony Chopper")
+                    };
+            }
+            if (genderID.Equals(2))
+            {
+                return new List<DropDownItem>
+                   {
+                       new DropDownItem(8,"Nami"),
+                       new DropDownItem(2,"Robin")
+                   };
+            }
+            throw new ApplicationException("Nie właściwe ID płci");
+        }
     }
 }
