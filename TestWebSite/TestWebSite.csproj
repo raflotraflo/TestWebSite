@@ -155,6 +155,8 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\DropDownItem.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\PersonContractModel.cs" />
+    <Compile Include="Models\PersonContractModelCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    @model IList<TestWebSite.Models.PersonContractModel>
 }
 
 <div class="jumbotron">
@@ -27,5 +28,54 @@
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-12">
+        <h2>TableTest: </h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <div>
+            <table class="table col-md-12">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Pesel</th>
+                        <th>Proof</th>
+                        <th>NIP</th>
+                        <th>BirthDate</th>
+                        <th>Saldo</th>
+                        <th>Number</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>TransferTitle</th>
+                        <th>button</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NameAndSurName</td>
+                            <td>@item.Age</td>
+                            <td>@item.Pesel</td>
+                            <td>@item.ProofOfPersonalNumbers</td>
+                            <td>@item.NIP</td>
+                            <td>@item.BirthDate</td>
+                            <td>@item.Saldo</td>
+                            <td>@item.NumberOfTransactions</td>
+                            <td>@item.AmountOfTheLastTransaction</td>
+                            <td>@item.DateOfLastTransaction</td>
+                            <td>@item.TransferTitle</td>
+                            <td>
+                                <button type="button"
+                                        class="btn btn-xs btn-info">
+                                    Szczegóły
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

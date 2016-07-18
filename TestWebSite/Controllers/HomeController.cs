@@ -11,12 +11,15 @@ namespace TestWebSite.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var m = PersonContractModelCollection.GetContractModelCollections();
+
+            return View(m);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }
