@@ -54,6 +54,18 @@ namespace TestWebSite.Controllers
             return Json(persons, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetPersonData()
+        {
+            var collection = PersonContractModelCollection.
+            GetContractModelCollections();
+
+            return new JsonResult()
+            {
+                JsonRequestBehavior = JsonRequestBehavior.DenyGet,
+                Data = collection
+            };
+        }
+
         public List<DropDownItem> GetGenders()
         {
             return new List<DropDownItem>()
